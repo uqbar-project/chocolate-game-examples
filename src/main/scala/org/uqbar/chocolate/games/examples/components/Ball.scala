@@ -7,7 +7,7 @@ import org.uqbar.chocolate.core.components.Collisionable
 import org.uqbar.chocolate.core.components.Visible
 import org.uqbar.chocolate.core.reactions.events.Update
 import org.uqbar.chocolate.core.reactions.events.Collision
-import org.uqbar.math.vectors.Vector
+import org.uqbar.math.spaces.R2._
 
 class Ball(var appearance: Appearance)(initialPosition: Vector)(var speed: Vector) extends Visible with Collisionable {
 
@@ -24,28 +24,28 @@ class Ball(var appearance: Appearance)(initialPosition: Vector)(var speed: Vecto
 	}
 
 	def correctTrajectoryToRemainOnScreen {
-		val rightOverflow = right - game.displaySize.x
+		val rightOverflow = right - game.displaySize(X)
 		if (rightOverflow > 0) {
 			move(-rightOverflow, 0)
-			speed = (-speed.x, speed.y)
+			speed = (-speed(X), speed(Y))
 		}
 
 		val leftOverflow = -left
 		if (leftOverflow > 0) {
 			move(leftOverflow, 0)
-			speed = (-speed.x, speed.y)
+			speed = (-speed(X), speed(Y))
 		}
 
-		val bottomOverflow = bottom - game.displaySize.y
+		val bottomOverflow = bottom - game.displaySize(Y)
 		if (bottomOverflow > 0) {
 			move(0, -bottomOverflow)
-			speed = (speed.x, -speed.y)
+			speed = (speed(X), -speed(Y))
 		}
 
 		val topOverflow = -top
 		if (topOverflow > 0) {
 			move(0, topOverflow)
-			speed = (speed.x, -speed.y)
+			speed = (speed(X), -speed(Y))
 		}
 	}
 }

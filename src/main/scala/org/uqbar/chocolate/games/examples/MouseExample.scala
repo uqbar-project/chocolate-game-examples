@@ -1,13 +1,15 @@
 package org.uqbar.chocolate.games.examples
 
+import scala.reflect.runtime.universe
+
 import org.uqbar.chocolate.core.Game
-import org.uqbar.chocolate.core.utils.Implicits._
 import org.uqbar.chocolate.core.components.Visible
-import org.uqbar.chocolate.core.dimensions.Positioned
-import org.uqbar.chocolate.games.examples.components.SpawnerCursor
 import org.uqbar.chocolate.core.components.debug.LogPanel
-import org.uqbar.chocolate.core.reactions.events.Pressed
+import org.uqbar.chocolate.core.dimensions.Positioned
 import org.uqbar.chocolate.core.loaders.ResourceLoader
+import org.uqbar.chocolate.core.reactions.events.Pressed
+import org.uqbar.chocolate.games.examples.components.SpawnerCursor
+import org.uqbar.math.spaces.R2.touple_to_vector
 
 object MouseExample extends Game {
 

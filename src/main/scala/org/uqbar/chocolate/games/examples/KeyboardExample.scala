@@ -1,17 +1,18 @@
 package org.uqbar.chocolate.games.examples
 
-import org.uqbar.chocolate.core.Game
-import java.awt.Dimension
-import org.uqbar.chocolate.core.appearances.Label
-import java.awt.Font
+import scala.reflect.runtime.universe
+
 import org.uqbar.cacao.Color
+import org.uqbar.chocolate.core.Game
+import org.uqbar.chocolate.core.appearances.Label
+import org.uqbar.chocolate.core.components.debug.LogPanel
+import org.uqbar.chocolate.core.loaders.ResourceLoader
+import org.uqbar.chocolate.core.reactions.events.Pressed
+import org.uqbar.chocolate.core.reactions.events.Released
+import org.uqbar.chocolate.core.reactions.events.Typed
 import org.uqbar.chocolate.games.examples.components.HorizontalLooper
 import org.uqbar.chocolate.games.examples.components.KeywordReader
-import org.uqbar.chocolate.core.components.debug.LogPanel
-import org.uqbar.chocolate.core.reactions.events.Pressed
-import org.uqbar.chocolate.core.reactions.events.Typed
-import org.uqbar.chocolate.core.reactions.events.Released
-import org.uqbar.chocolate.core.loaders.ResourceLoader
+import org.uqbar.math.spaces.R2.touple_to_vector
 
 object KeyboardExample extends Game {
 

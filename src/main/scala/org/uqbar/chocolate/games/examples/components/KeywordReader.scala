@@ -5,7 +5,7 @@ import org.uqbar.chocolate.core.appearances.Label
 import java.awt.Font
 import org.uqbar.chocolate.core.appearances.Appearance
 import org.uqbar.chocolate.core.components.Visible
-import org.uqbar.math.vectors.Vector
+import org.uqbar.math.spaces.R2._
 import org.uqbar.chocolate.core.reactions.events.Typed
 import org.uqbar.chocolate.games.examples.KeyboardExample
 import org.uqbar.chocolate.core.loaders.ResourceLoader

@@ -9,7 +9,7 @@ import org.uqbar.chocolate.core.components.Visible
 import org.uqbar.chocolate.core.reactions.events.Pressed
 import org.uqbar.chocolate.core.reactions.io.MouseButton
 import org.uqbar.chocolate.core.reactions.io.Key
-import org.uqbar.math.vectors.Vector
+import org.uqbar.math.spaces.R2._
 import org.uqbar.chocolate.core.reactions.events.MouseMoved
 
 class SpawnerCursor[T <: GameComponent with Positioned](

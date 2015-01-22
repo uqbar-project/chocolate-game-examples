@@ -4,7 +4,7 @@ import org.uqbar.chocolate.core.Game
 import org.uqbar.chocolate.core.GameScene
 import org.uqbar.chocolate.core.utils.Implicits._
 import org.uqbar.chocolate.core.components.GameComponent
-import org.uqbar.math.vectors._
+import org.uqbar.math.spaces.R2._
 import org.uqbar.cacao.Color
 import org.uqbar.chocolate.core.reactions.io.Key
 import org.uqbar.chocolate.core.reactions.events.Pressed

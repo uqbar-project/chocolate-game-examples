@@ -19,9 +19,7 @@ import org.uqbar.chocolate.core.reactions.events.Collision
 import org.uqbar.chocolate.core.utils.Implicits.double_to_int
 import org.uqbar.chocolate.core.utils.Implicits.min
 import org.uqbar.chocolate.games.examples.components.Ball
-import org.uqbar.math.vectors.Origin
-import org.uqbar.math.vectors.Vector
-import org.uqbar.math.vectors.Touple_to_Vector
+import org.uqbar.math.spaces.R2._
 import org.uqbar.chocolate.core.components.debug.LogPanel
 import org.uqbar.chocolate.core.reactions.events.Pressed
 import org.uqbar.chocolate.core.reactions.events.Hold
@@ -122,8 +120,8 @@ object CollisionExample extends Game {
 
 		ReactionRegistry.+=[Visible] {
 			case (Render(renderer), target: Visible) ⇒
-				val dx = target.translation.x
-				val dy = target.translation.y
+				val dx = target.translation(X)
+				val dy = target.translation(Y)
 				val bounds = target.appearance
 
 				renderer.color = Color.Yellow
@@ -141,12 +139,12 @@ object CollisionExample extends Game {
 			case (Render(renderer), collisionable) ⇒
 				val box = collisionable.boundingBox
 
-				val crossSegmentSize = min(15, box.size.x, box.size.y) / 3
+				val crossSegmentSize = min(15, box.size(X), box.size(Y)) / 3
 				val crossSize: Vector = (crossSegmentSize, crossSegmentSize)
 				val basePosition = collisionable.translation
 
 				val shape = box match {
-					case c: CircularBoundingBox ⇒ Circle(basePosition, c.size.x / 2)
+					case c: CircularBoundingBox ⇒ Circle(basePosition, c.size(X) / 2)
 					case r: RectangularBoundingBox ⇒ Rectangle(basePosition + (r.left, r.top), r.size)
 				}
 
@@ -154,7 +152,8 @@ object CollisionExample extends Game {
 				renderer.draw(
 					// Center
 					Line(basePosition - crossSize, basePosition + crossSize),
-					Line(basePosition + crossSize.zipWith(_ * _)(1, -1), basePosition + crossSize.zipWith(_ * _)(-1, +1)),
+          //TODO: Ver por qué el zipWith me está pidiendo parámetros
+					Line(basePosition + crossSize.zipWith[Double, Double](_ * _)(1, -1), basePosition + crossSize.zipWith[Double, Double](_ * _)(-1, +1)),
 
 					// Line to component position
 					Line(basePosition, basePosition + box.translation),
