@@ -77,32 +77,20 @@ object CollisionExample extends Game {
 	// ****************************************************************
 
 	protected def extractBallsFromFile(appearance: Appearance) = {
-		var in: ObjectInputStream = null
-		try {
-			in = new ObjectInputStream(new FileInputStream(DATA_FILE_NAME))
-		} catch {
-			case e: FileNotFoundException =>
-				generateRandomVectorsFile
-				in = new ObjectInputStream(new FileInputStream(DATA_FILE_NAME))
-		}
-
-		val vectors = in.readObject.asInstanceOf[Seq[(Vector, Vector)]]
-		in.close
+		val vectors = generateRandomVectorsFile
 
 		vectors.map{ case (position: Vector, speed: Vector) ⇒ new Ball(appearance)(position)(speed) }
 	}
 
-	def generateRandomVectorsFile {
+	def generateRandomVectorsFile = {
 		def randomBallSpeed = {
 			val orientation = if (Math.random > 0.5) 1 else -1
 			(Math.random * orientation * (MAX_BALL_SPEED - MIN_BALL_SPEED) + MIN_BALL_SPEED)
 		}
-
-		val out = new ObjectOutputStream(new FileOutputStream(DATA_FILE_NAME))
-		out.writeObject(1 to STRESS_COUNT map { i =>
+    
+		1 to STRESS_COUNT map { i =>
 			(displaySize.map(_ * Math.random), (randomBallSpeed, randomBallSpeed): Vector)
-		})
-		out.close
+		}
 	}
 
 	//*********************************************************************************************
